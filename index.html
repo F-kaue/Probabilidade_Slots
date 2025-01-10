@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogos Personalizados</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+@media (max-width: 768px) {
+    .games-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .game-card {
+        width: 90%; /* Reduzir a largura no celular */
+    }
+
+    header h1 {
+        font-size: 2em; /* Tamanho menor no título */
+    }
+
+    .game-card img {
+        width: 100%;
+        height: auto;
+    }
+}
+
+        body {
+            font-family: 'Poppins', Arial, sans-serif;
+            background: linear-gradient(135deg, #1e1e2f, #312450);
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            padding: 20px;
+            background: linear-gradient(135deg, #27293d, #3a416f);
+            text-align: center;
+            position: relative;
+            border-bottom: 3px solid #28a745;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 3em;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+        }
+
+        .games-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            padding: 20px;
+        }
+
+        .game-card {
+            background: linear-gradient(135deg, #2c2f48, #3a416f);
+            border-radius: 15px;
+            width: 230px;
+            padding: 15px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+            text-align: center;
+            position: relative;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .game-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
+        }
+
+        .game-card img {
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+
+        .game-card h3 {
+            font-size: 20px;
+            margin: 10px 0;
+            color: #ffdb4d;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+        }
+
+        .game-card .stats p {
+            font-size: 14px;
+            margin: 5px 0;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 10px;
+            border-radius: 5px;
+            margin-bottom: 8px;
+            background-color: #444;
+            position: relative;
+        }
+
+        .progress-bar span {
+            display: block;
+            height: 100%;
+            border-radius: 5px;
+            position: absolute;
+        }
+
+        .progress-bar.minima span {
+            background-color: #ff4d4d;
+        }
+
+        .progress-bar.padrao span {
+            background-color: #ffd633;
+        }
+
+        .progress-bar.maxima span {
+            background-color: #4dff88;
+        }
+
+        .game-card button {
+            background: linear-gradient(135deg, #28a745, #43d050);
+            color: #fff;
+            border: none;
+            padding: 10px;
+            width: 100%;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        .game-card button:hover {
+            background: linear-gradient(135deg, #218838, #37c344);
+            transform: scale(1.05);
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(135deg, #27293d, #3a416f);
+            margin-top: 20px;
+            box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 14px;
+            color: #bbb;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🐯💲 Probabilidades da Sorte 💲🐯</h1>
+    </header>
+
+    <div class="games-container">
+        <!-- Apenas Adicione Novos Jogos Aqui -->
+        <div class="game-card" data-game="fortune-rabbit">
+            <img src="https://m.media-amazon.com/images/I/81jqX1J8C5L.png" alt="Fortune Rabbit">
+            <h3>Fortune Rabbit</h3>
+            <div class="stats">
+                <p>Distribuição: 97%</p>
+                <div class="progress-bar maxima">
+                    <span style="width: 97%;"></span>
+                </div>
+                <p>Mínima: 55%</p>
+                <div class="progress-bar minima">
+                    <span style="width: 55%;"></span>
+                </div>
+                <p>Padrão: 75%</p>
+                <div class="progress-bar padrao">
+                    <span style="width: 75%;"></span>
+                </div>
+            </div>
+            <button class="redirect-btn">Plataforma Indicada</button>
+        </div>
+
+        <div class="game-card" data-game="fortune-tiger">
+            <img src="https://img.utdstc.com/icon/369/903/369903d1754537277dc661625a110396f6a799b7c07cb9e4dea3577c6ea78ee0:200" alt="Fortune Tiger">
+            <h3>Fortune Tiger</h3>
+            <div class="stats">
+                <p>Distribuição: 80%</p>
+                <div class="progress-bar maxima">
+                    <span style="width: 80%;"></span>
+                </div>
+                <p>Máxima: 80%</p>
+                <div class="progress-bar padrao">
+                    <span style="width: 65%;"></span>
+                </div>
+                <p>Padrão: 65%</p>
+                <div class="progress-bar minima">
+                    <span style="width: 45%;"></span>
+                </div>
+                <p>Mínima: 45%</p>
+            </div>
+            <button class="redirect-btn">Plataforma Indicada</button>
+        </div>
+
+        <div class="game-card" data-game="fortune-ox">
+            <img src="https://i.pinimg.com/originals/af/57/fb/af57fbca7b44dbc9ea07dd6b18bc6f54.png" alt="Fortune Ox">
+            <h3>Fortune Ox</h3>
+            <div class="stats">
+                <p>Distribuição: 70%</p>
+                <div class="progress-bar maxima">
+                    <span style="width: 70%;"></span>
+                </div>
+                <p>Máxima: 70%</p>
+                <div class="progress-bar padrao">
+                    <span style="width: 50%;"></span>
+                </div>
+                <p>Padrão: 50%</p>
+                <div class="progress-bar minima">
+                    <span style="width: 35%;"></span>
+                </div>
+                <p>Mínima: 35%</p>
+            </div>
+            <button class="redirect-btn">Plataforma Indicada</button>
+        </div>
+    
+
+        <div class="game-card" data-game="fortune-mouse">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmfNHZEGHTlKzQ8M8IFHaFCG3COKXtyaPhVg&s" alt="Fortune Mouse">
+            <h3>Fortune Mouse</h3>
+            <div class="stats">
+                <p>Distribuição: 85%</p>
+                <div class="progress-bar maxima">
+                    <span style="width: 87%;"></span>
+                </div>
+                <p>Máxima: 85%</p>
+                <div class="progress-bar padrao">
+                    <span style="width: 90%;"></span>
+                </div>
+                <p>Padrão: 70%</p>
+                <div class="progress-bar minima">
+                    <span style="width: 17%;"></span>
+                </div>
+                <p>Mínima: 50%</p>
+            </div>
+            <button class="redirect-btn">Plataforma Indicada</button>
+        </div>
+
+        <div class="game-card" data-game="fortune-dragon">
+            <img src="https://cdn.hub88.io/pgsoft/pgs_fortunedragon.jpg" alt="Fortune Dragon">
+            <h3>Fortune Dragon</h3>
+            <div class="stats">
+                <p>Distribuição: 85%</p>
+                <div class="progress-bar maxima">
+                    <span style="width: 85%;"></span>
+                </div>
+                <p>Máxima: 85%</p>
+                <div class="progress-bar padrao">
+                    <span style="width: 70%;"></span>
+                </div>
+                <p>Padrão: 70%</p>
+                <div class="progress-bar minima">
+                    <span style="width: 50%;"></span>
+                </div>
+                <p>Mínima: 50%</p>
+            </div>
+            <button class="redirect-btn">Plataforma Indicada</button>
+        </div>
+        <div class="game-card" data-game="dragon-hatch-2">
+            <img src="https://static.casino.guru/pict/989129/Dragon-Hatch-2.png?timestamp=1729854874000&imageDataId=1043614&width=320&height=247" alt="Dragon Hatch 2">
+            <h3>Dragon Hatch 2</h3>
+            <div class="stats">
+                <p>Distribuição: 85%</p>
+                <div class="progress-bar maxima">
+                    <span style="width: 85%;"></span>
+                </div>
+                <p>Máxima: 85%</p>
+                <div class="progress-bar padrao">
+                    <span style="width: 70%;"></span>
+                </div>
+                <p>Padrão: 70%</p>
+                <div class="progress-bar minima">
+                    <span style="width: 50%;"></span>
+                </div>
+                <p>Mínima: 50%</p>
+            </div>
+            <button class="redirect-btn">Plataforma Indicada</button>
+        </div>
+
+        <div class="game-card" data-game="ganesha-gold">
+            <img src="https://cdn.hub88.io/pgsoft/pgs_ganeshagold.jpg" alt="Ganesha Gold">
+            <h3>Ganesha Gold</h3>
+            <div class="stats">
+                <p>Distribuição: 85%</p>
+                <div class="progress-bar maxima">
+                    <span style="width: 85%;"></span>
+                </div>
+                <p>Máxima: 85%</p>
+                <div class="progress-bar padrao">
+                    <span style="width: 70%;"></span>
+                </div>
+                <p>Padrão: 70%</p>
+                <div class="progress-bar minima">
+                    <span style="width: 50%;"></span>
+                </div>
+                <p>Mínima: 50%</p>
+            </div>
+            <button class="redirect-btn">Plataforma Indicada</button>
+        </div>
+
+        <div class="game-card" data-game="wild-ape">
+            <img src="https://mediumrare.imgix.net/8668d1bee3eb2776c5182e32e69134244e75100e8431617d2974ce3bd2059434?&dpr=2&format=auto&auto=format&q=50" alt="Wild Ape">
+            <h3>Wild Ape</h3>
+            <div class="stats">
+                <p>Distribuição: 78%</p>
+                <div class="progress-bar maxima">
+                    <span style="width: 78%;"></span>
+                </div>
+                <p>Máxima: 78%</p>
+                <div class="progress-bar padrao">
+                    <span style="width: 60%;"></span>
+                </div>
+                <p>Padrão: 60%</p>
+                <div class="progress-bar minima">
+                    <span style="width: 40%;"></span>
+                </div>
+                <p>Mínima: 40%</p>
+            </div>
+            <button class="redirect-btn">Plataforma Indicada</button>
+        </div>
+        
+        <div class="game-card" data-game="dragon-tiger-luck">
+            <img src="https://cdn.hub88.io/pgsoft/pgs_dragontigerluck.jpg" alt="Dragon Tiger Luck">
+            <h3>Dragon Tiger Luck</h3>
+            <div class="stats">
+                <p>Distribuição: 65%</p>
+                <div class="progress-bar maxima">
+                    <span style="width: 65%;"></span>
+                </div>
+                <p>Máxima: 65%</p>
+                <div class="progress-bar padrao">
+                    <span style="width: 50%;"></span>
+                </div>
+                <p>Padrão: 50%</p>
+                <div class="progress-bar minima">
+                    <span style="width: 30%;"></span>
+                </div>
+                <p>Mínima: 30%</p>
+            </div>
+            <button class="redirect-btn">Plataforma Indicada</button>
+        </div>
+        
+        <div class="game-card" data-game="dragon-hatch">
+            <img src="https://cdn.hub88.io/pgsoft/pgs_dragonhatch.jpg" alt="Dragon Hatch">
+            <h3>Dragon Hatch</h3>
+            <div class="stats">
+                <p>Distribuição: 92%</p>
+                <div class="progress-bar maxima">
+                    <span style="width: 92%;"></span>
+                </div>
+                <p>Máxima: 92%</p>
+                <div class="progress-bar padrao">
+                    <span style="width: 75%;"></span>
+                </div>
+                <p>Padrão: 75%</p>
+                <div class="progress-bar minima">
+                    <span style="width: 55%;"></span>
+                </div>
+                <p>Mínima: 55%</p>
+            </div>
+            <button class="redirect-btn">Plataforma Indicada</button>
+        </div>
+        
+        <div class="game-card" data-game="bikini-paradise">
+            <img src="https://cdn.hub88.io/pgsoft/pgs_bikiniparadise.jpg" alt="Bikini Paradise">
+            <h3>Bikini Paradise</h3>
+            <div class="stats">
+                <p>Distribuição: 68%</p>
+                <div class="progress-bar maxima">
+                    <span style="width: 68%;"></span>
+                </div>
+                <p>Máxima: 68%</p>
+                <div class="progress-bar padrao">
+                    <span style="width: 55%;"></span>
+                </div>
+                <p>Padrão: 55%</p>
+                <div class="progress-bar minima">
+                    <span style="width: 38%;"></span>
+                </div>
+                <p>Mínima: 38%</p>
+            </div>
+            <button class="redirect-btn">Plataforma Indicada</button>
+        </div>
+        
+        <div class="game-card" data-game="cash-mania">
+            <img src="https://cdn.hub88.io/pgsoft/pgs_cashmania.jpg" alt="Cash Mania">
+            <h3>Cash Mania</h3>
+            <div class="stats">
+                <p>Distribuição: 85%</p>
+                <div class="progress-bar maxima">
+                    <span style="width: 85%;"></span>
+                </div>
+                <p>Máxima: 85%</p>
+                <div class="progress-bar padrao">
+                    <span style="width: 70%;"></span>
+                </div>
+                <p>Padrão: 70%</p>
+                <div class="progress-bar minima">
+                    <span style="width: 50%;"></span>
+                </div>
+                <p>Mínima: 50%</p>
+            </div>
+            <button class="redirect-btn">Plataforma Indicada</button>
+        </div>
+        
+        <div class="game-card" data-game="jungle-delight">
+            <img src="https://cdn.hub88.io/pgsoft/pgs_jungledelight.jpg" alt="Jungle Delight">
+            <h3>Jungle Delight</h3>
+            <div class="stats">
+                <p>Distribuição: 72%</p>
+                <div class="progress-bar maxima">
+                    <span style="width: 72%;"></span>
+                </div>
+                <p>Máxima: 72%</p>
+                <div class="progress-bar padrao">
+                    <span style="width: 60%;"></span>
+                </div>
+                <p>Padrão: 60%</p>
+                <div class="progress-bar minima">
+                    <span style="width: 40%;"></span>
+                </div>
+                <p>Mínima: 40%</p>
+            </div>
+            <button class="redirect-btn">Plataforma Indicada</button>
+        </div>
+        
+        <div class="game-card" data-game="wild-bandito">
+            <img src="https://static.casino.guru/pict/184972/Wild-Bandito.png?timestamp=1653496085000&imageDataId=321566&width=320&height=247" alt="Wild Bandito">
+            <h3>Wild Bandito</h3>
+            <div class="stats">
+                <p>Distribuição: 75%</p>
+                <div class="progress-bar maxima">
+                    <span style="width: 75%;"></span>
+                </div>
+                <p>Máxima: 75%</p>
+                <div class="progress-bar padrao">
+                    <span style="width: 60%;"></span>
+                </div>
+                <p>Padrão: 60%</p>
+                <div class="progress-bar minima">
+                    <span style="width: 45%;"></span>
+                </div>
+                <p>Mínima: 45%</p>
+            </div>
+            <button class="redirect-btn">Plataforma Indicada</button>
+        </div>
+
+        <div class="game-card" data-game="super-market-spree">
+            <img src="https://cdn.hub88.io/pgsoft/pgs_supermarketspree.jpg" alt="Super Market Spree">
+            <h3>Super Market Spree</h3>
+            <div class="stats">
+                <p>Distribuição: 90%</p>
+                <div class="progress-bar maxima">
+                    <span style="width: 90%;"></span>
+                </div>
+                <p>Máxima: 90%</p>
+                <div class="progress-bar padrao">
+                    <span style="width: 70%;"></span>
+                </div>
+                <p>Padrão: 70%</p>
+                <div class="progress-bar minima">
+                    <span style="width: 50%;"></span>
+                </div>
+                <p>Mínima: 50%</p>
+            </div>
+            <button class="redirect-btn">Plataforma Indicada</button>
+        </div>
+        
+        <div class="game-card" data-game="ganesha-fortune">
+            <img src="https://cdn.hub88.io/pgsoft/pgs_ganeshafortune.jpg" alt="Ganesha Fortune">
+            <h3>Ganesha Fortune</h3>
+            <div class="stats">
+                <p>Distribuição: 88%</p>
+                <div class="progress-bar maxima">
+                    <span style="width: 88%;"></span>
+                </div>
+                <p>Máxima: 88%</p>
+                <div class="progress-bar padrao">
+                    <span style="width: 75%;"></span>
+                </div>
+                <p>Padrão: 75%</p>
+                <div class="progress-bar minima">
+                    <span style="width: 60%;"></span>
+                </div>
+                <p>Mínima: 60%</p>
+            </div>
+            <button class="redirect-btn">Plataforma Indicada</button>
+        </div>
+        
+        <div class="game-card" data-game="piggy-gold">
+            <img src="https://cdn.hub88.io/pgsoft/pgs_piggygold.jpg" alt="Piggy Gold">
+            <h3>Piggy Gold</h3>
+            <div class="stats">
+                <p>Distribuição: 73%</p>
+                <div class="progress-bar maxima">
+                    <span style="width: 73%;"></span>
+                </div>
+                <p>Máxima: 73%</p>
+                <div class="progress-bar padrao">
+                    <span style="width: 60%;"></span>
+                </div>
+                <p>Padrão: 60%</p>
+                <div class="progress-bar minima">
+                    <span style="width: 45%;"></span>
+                </div>
+                <p>Mínima: 45%</p>
+            </div>
+            <button class="redirect-btn">Plataforma Indicada</button>
+        </div>
+        
+        <div class="game-card" data-game="lucky-piggy">
+            <img src="https://cdn.hub88.io/pgsoft/pgs_luckypiggy.jpg" alt="Lucky Piggy">
+            <h3>Lucky Piggy</h3>
+            <div class="stats">
+                <p>Distribuição: 80%</p>
+                <div class="progress-bar maxima">
+                    <span style="width: 80%;"></span>
+                </div>
+                <p>Máxima: 80%</p>
+                <div class="progress-bar padrao">
+                    <span style="width: 65%;"></span>
+                </div>
+                <p>Padrão: 65%</p>
+                <div class="progress-bar minima">
+                    <span style="width: 50%;"></span>
+                </div>
+                <p>Mínima: 50%</p>
+            </div>
+            <button class="redirect-btn">Plataforma Indicada</button>
+        </div>
+        
+        <div class="game-card" data-game="leprechaun-riches">
+            <img src="https://cdn.hub88.io/pgsoft/pgs_leprechaunriches.jpg" alt="Leprechaun Riches">
+            <h3>Leprechaun Riches</h3>
+            <div class="stats">
+                <p>Distribuição: 85%</p>
+                <div class="progress-bar maxima">
+                    <span style="width: 85%;"></span>
+                </div>
+                <p>Máxima: 85%</p>
+                <div class="progress-bar padrao">
+                    <span style="width: 70%;"></span>
+                </div>
+                <p>Padrão: 70%</p>
+                <div class="progress-bar minima">
+                    <span style="width: 55%;"></span>
+                </div>
+                <p>Mínima: 55%</p>
+            </div>
+            <button class="redirect-btn">Plataforma Indicada</button>
+        </div>
+        
+        <div class="game-card" data-game="lucky-neko">
+            <img src="https://cdn.hub88.io/pgsoft/pgs_luckyneko.jpg" alt="Lucky Neko">
+            <h3>Lucky Neko</h3>
+            <div class="stats">
+                <p>Distribuição: 77%</p>
+                <div class="progress-bar maxima">
+                    <span style="width: 77%;"></span>
+                </div>
+                <p>Máxima: 77%</p>
+                <div class="progress-bar padrao">
+                    <span style="width: 62%;"></span>
+                </div>
+                <p>Padrão: 62%</p>
+                <div class="progress-bar minima">
+                    <span style="width: 45%;"></span>
+                </div>
+                <p>Mínima: 45%</p>
+            </div>
+            <button class="redirect-btn">Plataforma Indicada</button>
+        </div>
+
+        <div class="game-card" data-game="caishen-wins">
+            <img src="https://cdn.hub88.io/pgsoft/pgs_caishenwins.jpg" alt="Caishen Wins">
+            <h3>Caishen Wins</h3>
+            <div class="stats">
+                <p>Distribuição: 82%</p>
+                <div class="progress-bar maxima">
+                    <span style="width: 82%;"></span>
+                </div>
+                <p>Máxima: 82%</p>
+                <div class="progress-bar padrao">
+                    <span style="width: 68%;"></span>
+                </div>
+                <p>Padrão: 68%</p>
+                <div class="progress-bar minima">
+                    <span style="width: 50%;"></span>
+                </div>
+                <p>Mínima: 50%</p>
+            </div>
+            <button class="redirect-btn">Plataforma Indicada</button>
+        </div>
+        
+        <div class="game-card" data-game="shaolin-soccer">
+            <img src="https://cdn.hub88.io/pgsoft/pgs_shaolinsoccer.jpg" alt="Shaolin Soccer">
+            <h3>Shaolin Soccer</h3>
+            <div class="stats">
+                <p>Distribuição: 75%</p>
+                <div class="progress-bar maxima">
+                    <span style="width: 75%;"></span>
+                </div>
+                <p>Máxima: 75%</p>
+                <div class="progress-bar padrao">
+                    <span style="width: 60%;"></span>
+                </div>
+                <p>Padrão: 60%</p>
+                <div class="progress-bar minima">
+                    <span style="width: 40%;"></span>
+                </div>
+                <p>Mínima: 40%</p>
+            </div>
+            <button class="redirect-btn">Plataforma Indicada</button>
+        </div>
+        
+        <div class="game-card" data-game="tree-of-fortune">
+            <img src="https://cdn.hub88.io/pgsoft/pgs_treeoffortune.jpg" alt="Tree Of Fortune">
+            <h3>Tree Of Fortune</h3>
+            <div class="stats">
+                <p>Distribuição: 78%</p>
+                <div class="progress-bar maxima">
+                    <span style="width: 78%;"></span>
+                </div>
+                <p>Máxima: 78%</p>
+                <div class="progress-bar padrao">
+                    <span style="width: 65%;"></span>
+                </div>
+                <p>Padrão: 65%</p>
+                <div class="progress-bar minima">
+                    <span style="width: 45%;"></span>
+                </div>
+                <p>Mínima: 45%</p>
+            </div>
+            <button class="redirect-btn">Plataforma Indicada</button>
+        </div>
+        
+        <div class="game-card" data-game="wild-bounty-showdown">
+            <img src="https://cdn.hub88.io/pgsoft/pgs_wildbountyshowdown.jpg" alt="Wild Bounty Showdown">
+            <h3>Wild Bounty Showdown</h3>
+            <div class="stats">
+                <p>Distribuição: 85%</p>
+                <div class="progress-bar maxima">
+                    <span style="width: 85%;"></span>
+                </div>
+                <p>Máxima: 85%</p>
+                <div class="progress-bar padrao">
+                    <span style="width: 70%;"></span>
+                </div>
+                <p>Padrão: 70%</p>
+                <div class="progress-bar minima">
+                    <span style="width: 55%;"></span>
+                </div>
+                <p>Mínima: 55%</p>
+            </div>
+            <button class="redirect-btn">Plataforma Indicada</button>
+        </div>
+        
+        <div class="game-card" data-game="cocktail-nights">
+            <img src="https://cdn.hub88.io/pgsoft/pgs_cocktailnights.jpg" alt="Cocktail Nights">
+            <h3>Cocktail Nights</h3>
+            <div class="stats">
+                <p>Distribuição: 80%</p>
+                <div class="progress-bar maxima">
+                    <span style="width: 80%;"></span>
+                </div>
+                <p>Máxima: 80%</p>
+                <div class="progress-bar padrao">
+                    <span style="width: 65%;"></span>
+                </div>
+                <p>Padrão: 65%</p>
+                <div class="progress-bar minima">
+                    <span style="width: 45%;"></span>
+                </div>
+                <p>Mínima: 45%</p>
+            </div>
+            <button class="redirect-btn">Plataforma Indicada</button>
+        </div>
+        
+        <div class="game-card" data-game="medusa-ii">
+            <img src="https://bc.imgix.net/game/image/a9c8ff6b-18c8-4496-bfaf-2b68385841b2.png?_v=4&auto=format&dpr=2.625&w=100" alt="Medusa II">
+            <h3>Medusa II</h3>
+            <div class="stats">
+                <p>Distribuição: 88%</p>
+                <div class="progress-bar maxima">
+                    <span style="width: 88%;"></span>
+                </div>
+                <p>Máxima: 88%</p>
+                <div class="progress-bar padrao">
+                    <span style="width: 75%;"></span>
+                </div>
+                <p>Padrão: 75%</p>
+                <div class="progress-bar minima">
+                    <span style="width: 55%;"></span>
+                </div>
+                <p>Mínima: 55%</p>
+            </div>
+            <button class="redirect-btn">Plataforma Indicada</button>
+        </div>
+
+        <div class="game-card" data-game="double-fortune">
+            <img src="https://cdn.hub88.io/pgsoft/pgs_doublefortune.jpg" alt="Double Fortune">
+            <h3>Double Fortune</h3>
+            <div class="stats">
+                <p>Distribuição: 77%</p>
+                <div class="progress-bar maxima">
+                    <span style="width: 77%;"></span>
+                </div>
+                <p>Máxima: 77%</p>
+                <div class="progress-bar padrao">
+                    <span style="width: 63%;"></span>
+                </div>
+                <p>Padrão: 63%</p>
+                <div class="progress-bar minima">
+                    <span style="width: 42%;"></span>
+                </div>
+                <p>Mínima: 42%</p>
+            </div>
+            <button class="redirect-btn">Plataforma Indicada</button>
+        </div>
+        
+        <div class="game-card" data-game="the-great-ice-scape">
+            <img src="https://cdn.hub88.io/pgsoft/pgs_thegreaticescape.jpg" alt="The Great Ice Scape">
+            <h3>The Great Ice Scape</h3>
+            <div class="stats">
+                <p>Distribuição: 83%</p>
+                <div class="progress-bar maxima">
+                    <span style="width: 83%;"></span>
+                </div>
+                <p>Máxima: 83%</p>
+                <div class="progress-bar padrao">
+                    <span style="width: 70%;"></span>
+                </div>
+                <p>Padrão: 70%</p>
+                <div class="progress-bar minima">
+                    <span style="width: 50%;"></span>
+                </div>
+                <p>Mínima: 50%</p>
+            </div>
+            <button class="redirect-btn">Plataforma Indicada</button>
+        </div>
+        
+        <div class="game-card" data-game="wild-heist-cashout">
+            <img src="https://cdn.hub88.io/pgsoft/pgs_wildheistcashout.jpg" alt="Wild Heist Cashout">
+            <h3>Wild Heist Cashout</h3>
+            <div class="stats">
+                <p>Distribuição: 81%</p>
+                <div class="progress-bar maxima">
+                    <span style="width: 81%;"></span>
+                </div>
+                <p>Máxima: 81%</p>
+                <div class="progress-bar padrao">
+                    <span style="width: 66%;"></span>
+                </div>
+                <p>Padrão: 66%</p>
+                <div class="progress-bar minima">
+                    <span style="width: 48%;"></span>
+                </div>
+                <p>Mínima: 48%</p>
+            </div>
+            <button class="redirect-btn">Plataforma Indicada</button>
+        </div>
+        
+        <div class="game-card" data-game="songkran-splash">
+            <img src="https://cdn.hub88.io/pgsoft/pgs_songkransplash.jpg" alt="Songkran Splash">
+            <h3>Songkran Splash</h3>
+            <div class="stats">
+                <p>Distribuição: 85%</p>
+                <div class="progress-bar maxima">
+                    <span style="width: 85%;"></span>
+                </div>
+                <p>Máxima: 85%</p>
+                <div class="progress-bar padrao">
+                    <span style="width: 72%;"></span>
+                </div>
+                <p>Padrão: 72%</p>
+                <div class="progress-bar minima">
+                    <span style="width: 53%;"></span>
+                </div>
+                <p>Mínima: 53%</p>
+            </div>
+            <button class="redirect-btn">Plataforma Indicada</button>
+        </div>
+        
+        <div class="game-card" data-game="werewolf-hunt">
+            <img src="https://mediumrare.imgix.net/2c7bccf6b837082ce28c2bc78a83c4366f0ba041700059d092bccb9bd8e66219?&dpr=2&format=auto&auto=format&q=50" alt="Werewolf’s Hunt">
+            <h3>Werewolf’s Hunt</h3>
+            <div class="stats">
+                <p>Distribuição: 79%</p>
+                <div class="progress-bar maxima">
+                    <span style="width: 79%;"></span>
+                </div>
+                <p>Máxima: 79%</p>
+                <div class="progress-bar padrao">
+                    <span style="width: 68%;"></span>
+                </div>
+                <p>Padrão: 68%</p>
+                <div class="progress-bar minima">
+                    <span style="width: 46%;"></span>
+                </div>
+                <p>Mínima: 46%</p>
+            </div>
+            <button class="redirect-btn">Plataforma Indicada</button>
+        </div>
+        
+        <div class="game-card" data-game="mafia-mayhem">
+            <img src="https://cdn.hub88.io/pgsoft/pgs_mafiamayhem.jpg" alt="Mafia Mayhem">
+            <h3>Mafia Mayhem</h3>
+            <div class="stats">
+                <p>Distribuição: 80%</p>
+                <div class="progress-bar maxima">
+                    <span style="width: 80%;"></span>
+                </div>
+                <p>Máxima: 80%</p>
+                <div class="progress-bar padrao">
+                    <span style="width: 67%;"></span>
+                </div>
+                <p>Padrão: 67%</p>
+                <div class="progress-bar minima">
+                    <span style="width: 47%;"></span>
+                </div>
+                <p>Mínima: 47%</p>
+            </div>
+            <button class="redirect-btn">Plataforma Indicada</button>
+        </div>
+        
+        <div class="game-card" data-game="tsar-treasures">
+            <img src="https://cdn.hub88.io/pgsoft/pgs_tsartreasures.jpg" alt="Tsar Treasures">
+            <h3>Tsar Treasures</h3>
+            <div class="stats">
+                <p>Distribuição: 84%</p>
+                <div class="progress-bar maxima">
+                    <span style="width: 84%;"></span>
+                </div>
+                <p>Máxima: 84%</p>
+                <div class="progress-bar padrao">
+                    <span style="width: 69%;"></span>
+                </div>
+                <p>Padrão: 69%</p>
+                <div class="progress-bar minima">
+                    <span style="width: 52%;"></span>
+                </div>
+                <p>Mínima: 52%</p>
+            </div>
+            <button class="redirect-btn">Plataforma Indicada</button>
+        </div>
+        
+        
+
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Jogos Personalizados. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        const links = [
+            'https://manga-vesak-pg.com/?id=214966595&currency=BRL&type=2',
+            'https://1motelpg.com/?id=725526060&currency=BRL&type=2'
+        ];
+    
+        // Função para atribuir links aleatórios aos botões
+        function assignRandomLinks() {
+            const buttons = document.querySelectorAll('.redirect-btn');
+            const shuffledLinks = [...links].sort(() => Math.random() - 0.5);
+    
+            buttons.forEach((button, index) => {
+                button.onclick = () => {
+                    window.location.href = shuffledLinks[index % shuffledLinks.length];
+                };
+            });
+        }
+    
+        // Função para gerar probabilidades diversificadas
+        function generateDiversifiedProbabilities(totalGames) {
+            const probabilities = [];
+    
+            for (let i = 0; i < totalGames; i++) {
+                // Decide o tipo do jogo: alta, média ou baixa probabilidade
+                const type = Math.random();
+    
+                let maxima, padrao, minima;
+    
+                if (type < 0.33) {
+                    // Jogo com probabilidades ALTAS
+                    maxima = Math.floor(Math.random() * (100 - 70) + 70); // 70% - 100%
+                    padrao = Math.floor(Math.random() * (70 - 50) + 50);  // 50% - 70%
+                    minima = Math.floor(Math.random() * (50 - 29) + 29);  // 29% - 50%
+                } else if (type < 0.66) {
+                    // Jogo com probabilidades MÉDIAS
+                    maxima = Math.floor(Math.random() * (70 - 50) + 50);  // 50% - 70%
+                    padrao = Math.floor(Math.random() * (50 - 40) + 40);  // 40% - 50%
+                    minima = Math.floor(Math.random() * (40 - 29) + 29);  // 29% - 40%
+                } else {
+                    // Jogo com probabilidades BAIXAS
+                    maxima = Math.floor(Math.random() * (50 - 40) + 40);  // 40% - 50%
+                    padrao = Math.floor(Math.random() * (40 - 30) + 30);  // 30% - 40%
+                    minima = Math.floor(Math.random() * (30 - 29) + 29);  // 29% - 30%
+                }
+    
+                probabilities.push({ maxima, padrao, minima });
+            }
+    
+            return probabilities;
+        }
+    
+        // Função para atualizar as probabilidades e exibir nos cartões
+        function updateProbabilities() {
+            const cards = document.querySelectorAll('.game-card');
+            const totalGames = cards.length;
+    
+            // Gera probabilidades diversificadas
+            const probabilities = generateDiversifiedProbabilities(totalGames);
+    
+            cards.forEach((card, index) => {
+                const { maxima, padrao, minima } = probabilities[index];
+    
+                const maximaBar = card.querySelector('.progress-bar.maxima span');
+                const padraoBar = card.querySelector('.progress-bar.padrao span');
+                const minimaBar = card.querySelector('.progress-bar.minima span');
+    
+                if (maximaBar) maximaBar.style.width = `${maxima}%`;
+                if (padraoBar) padraoBar.style.width = `${padrao}%`;
+                if (minimaBar) minimaBar.style.width = `${minima}%`;
+    
+                const stats = card.querySelector('.stats');
+                stats.innerHTML = `
+                    <p>Distribuição: ${Math.max(maxima, padrao, minima)}%</p>
+                    <div class="progress-bar maxima">
+                        <span style="width: ${maxima}%;"></span>
+                    </div>
+                    <p>Máxima: ${maxima}%</p>
+                    <div class="progress-bar padrao">
+                        <span style="width: ${padrao}%;"></span>
+                    </div>
+                    <p>Padrão: ${padrao}%</p>
+                    <div class="progress-bar minima">
+                        <span style="width: ${minima}%;"></span>
+                    </div>
+                    <p>Mínima: ${minima}%</p>
+                `;
+            });
+    
+            assignRandomLinks();
+        }
+    
+        // Define o intervalo de atualização para 5 minutos
+        setInterval(updateProbabilities, 300000);
+    
+        // Inicializa o script
+        assignRandomLinks();
+        updateProbabilities();
+    </script>
+    
+    
+    
+    
+    
+    
+    
