@@ -1,159 +1,148 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jogos Personalizados</title>
-    <link rel="stylesheet" href="styles.css">
-    <style>
-@media (max-width: 768px) {
-    .games-container {
-        flex-direction: row; /* Mudar para linha em vez de coluna */
-        justify-content: space-evenly; /* Para que os jogos fiquem distribuídos de forma equitativa */
-    }
-
-    .game-card {
-        width: 48%; /* Ajustar para 2 jogos por linha */
-    }
-
-    header h1 {
-        font-size: 2.5em; /* Ajustar o tamanho do título proporcionalmente */
-    }
-
-    .game-card img {
-        width: 100%;
-        height: auto;
-    }
-}
-
-        body {
-            font-family: 'Poppins', Arial, sans-serif;
-            background: linear-gradient(135deg, #1e1e2f, #312450);
-            color: #fff;
-            margin: 0;
-            padding: 0;
-        }
-
-        header {
-            padding: 20px;
-            background: linear-gradient(135deg, #27293d, #3a416f);
-            text-align: center;
-            position: relative;
-            border-bottom: 3px solid #28a745;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-        }
-
-        header h1 {
-            margin: 0;
-            font-size: 3em;
-            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
-        }
-
+<style>
+    @media (max-width: 768px) {
         .games-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 15px;
-            padding: 20px;
+            flex-direction: row;
+            justify-content: space-evenly;
         }
 
         .game-card {
-            background: linear-gradient(135deg, #2c2f48, #3a416f);
-            border-radius: 15px;
-            width: 230px;
-            padding: 15px;
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
-            text-align: center;
-            position: relative;
-            transition: transform 0.3s, box-shadow 0.3s;
+            width: 48%; /* 2 jogos por linha */
         }
 
-        .game-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
+        header h1 {
+            font-size: calc(1.8rem + 2vw); /* Tamanho proporcional à largura da tela */
         }
+    }
 
-        .game-card img {
-            width: 200px;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 10px;
-            margin-bottom: 10px;
-        }
+    /* Estilo geral - permanece igual */
+    body {
+        font-family: 'Poppins', Arial, sans-serif;
+        background: linear-gradient(135deg, #1e1e2f, #312450);
+        color: #fff;
+        margin: 0;
+        padding: 0;
+    }
 
-        .game-card h3 {
-            font-size: 20px;
-            margin: 10px 0;
-            color: #ffdb4d;
-            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
-        }
+    header {
+        padding: 20px;
+        background: linear-gradient(135deg, #27293d, #3a416f);
+        text-align: center;
+        position: relative;
+        border-bottom: 3px solid #28a745;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    }
 
-        .game-card .stats p {
-            font-size: 14px;
-            margin: 5px 0;
-        }
+    header h1 {
+        margin: 0;
+        font-size: 3em; /* Tamanho padrão para desktop */
+        text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+    }
 
-        .progress-bar {
-            width: 100%;
-            height: 10px;
-            border-radius: 5px;
-            margin-bottom: 8px;
-            background-color: #444;
-            position: relative;
-        }
+    .games-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+        padding: 20px;
+    }
 
-        .progress-bar span {
-            display: block;
-            height: 100%;
-            border-radius: 5px;
-            position: absolute;
-        }
+    .game-card {
+        background: linear-gradient(135deg, #2c2f48, #3a416f);
+        border-radius: 15px;
+        width: 230px;
+        padding: 15px;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+        text-align: center;
+        position: relative;
+        transition: transform 0.3s, box-shadow 0.3s;
+    }
 
-        .progress-bar.minima span {
-            background-color: #ff4d4d;
-        }
+    .game-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
+    }
 
-        .progress-bar.padrao span {
-            background-color: #ffd633;
-        }
+    .game-card img {
+        width: 200px;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 10px;
+        margin-bottom: 10px;
+    }
 
-        .progress-bar.maxima span {
-            background-color: #4dff88;
-        }
+    .game-card h3 {
+        font-size: 20px;
+        margin: 10px 0;
+        color: #ffdb4d;
+        text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+    }
 
-        .game-card button {
-            background: linear-gradient(135deg, #28a745, #43d050);
-            color: #fff;
-            border: none;
-            padding: 10px;
-            width: 100%;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 16px;
-            font-weight: bold;
-            transition: background 0.3s, transform 0.2s;
-        }
+    .game-card .stats p {
+        font-size: 14px;
+        margin: 5px 0;
+    }
 
-        .game-card button:hover {
-            background: linear-gradient(135deg, #218838, #37c344);
-            transform: scale(1.05);
-        }
+    .progress-bar {
+        width: 100%;
+        height: 10px;
+        border-radius: 5px;
+        margin-bottom: 8px;
+        background-color: #444;
+        position: relative;
+    }
 
-        footer {
-            text-align: center;
-            padding: 20px;
-            background: linear-gradient(135deg, #27293d, #3a416f);
-            margin-top: 20px;
-            box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.3);
-        }
+    .progress-bar span {
+        display: block;
+        height: 100%;
+        border-radius: 5px;
+        position: absolute;
+    }
 
-        footer p {
-            margin: 0;
-            font-size: 14px;
-            color: #bbb;
-        }
-    </style>
-</head>
+    .progress-bar.minima span {
+        background-color: #ff4d4d;
+    }
+
+    .progress-bar.padrao span {
+        background-color: #ffd633;
+    }
+
+    .progress-bar.maxima span {
+        background-color: #4dff88;
+    }
+
+    .game-card button {
+        background: linear-gradient(135deg, #28a745, #43d050);
+        color: #fff;
+        border: none;
+        padding: 10px;
+        width: 100%;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: bold;
+        transition: background 0.3s, transform 0.2s;
+    }
+
+    .game-card button:hover {
+        background: linear-gradient(135deg, #218838, #37c344);
+        transform: scale(1.05);
+    }
+
+    footer {
+        text-align: center;
+        padding: 20px;
+        background: linear-gradient(135deg, #27293d, #3a416f);
+        margin-top: 20px;
+        box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.3);
+    }
+
+    footer p {
+        margin: 0;
+        font-size: 14px;
+        color: #bbb;
+    }
+</style>
+
 <body>
     <header>
         <h1>🐯💲 Probabilidades da Sorte 💲🐯</h1>
@@ -879,37 +868,23 @@
             });
         }
     
-        // Função para gerar probabilidades diversificadas
-        function generateDiversifiedProbabilities(totalGames) {
+        // Função para gerar probabilidades com maior peso para "mínima"
+        function generateProbabilities(totalGames) {
             const probabilities = [];
     
             for (let i = 0; i < totalGames; i++) {
-                // Decide o tipo do jogo: alta, média ou baixa probabilidade
-                const type = Math.random();
+                let minima, padrao, maxima;
     
-                let maxima, padrao, minima;
+                // Define a probabilidade "mínima" com maior chance de ser alta
+                minima = Math.random() < 0.5 
+                    ? Math.floor(Math.random() * (99 - 80) + 80) // Alta probabilidade: 80% - 99%
+                    : Math.floor(Math.random() * (50 - 10) + 10); // Baixa probabilidade: 10% - 50%
     
-                if (type < 0.33) {
-                    // Jogo com probabilidades ALTAS
-                    maxima = Math.floor(Math.random() * (100 - 70) + 70); // 70% - 100%
-                    padrao = Math.floor(Math.random() * (70 - 50) + 50);  // 50% - 70%
-                    minima = Math.floor(Math.random() * (50 - 29) + 29);  // 29% - 50%
-                } else if (type < 0.66) {
-                    // Jogo com probabilidades MÉDIAS
-                    maxima = Math.floor(Math.random() * (70 - 50) + 50);  // 50% - 70%
-                    padrao = Math.floor(Math.random() * (50 - 40) + 40);  // 40% - 50%
-                    minima = Math.floor(Math.random() * (40 - 29) + 29);  // 29% - 40%
-                } else {
-                    // Jogo com probabilidades BAIXAS
-                    maxima = Math.floor(Math.random() * (50 - 40) + 40);  // 40% - 50%
-                    padrao = Math.floor(Math.random() * (40 - 30) + 30);  // 30% - 40%
-                    minima = Math.floor(Math.random() * (30 - 29) + 29);  // 29% - 30%
-                }
-
-                // Aumentar aleatoriamente a probabilidade mínima para alguns jogos
-                if (Math.random() < 0.5) { // 50% de chance de aumentar a probabilidade mínima
-                    minima = Math.min(minima + 10, 50); // Aumenta no máximo até 50%
-                }
+                // Define a probabilidade "padrão" proporcional à "mínima"
+                padrao = Math.floor(Math.random() * (minima - 5) + 5); // 5% a um pouco abaixo da mínima
+    
+                // Define a probabilidade "máxima" maior que "padrão"
+                maxima = Math.floor(Math.random() * (100 - padrao) + padrao); // Entre "padrão" e 100%
     
                 probabilities.push({ maxima, padrao, minima });
             }
@@ -917,41 +892,62 @@
             return probabilities;
         }
     
+        // Função para determinar a cor da barra com base no valor da probabilidade
+        // Função para determinar a cor da barra com base no valor da probabilidade
+function getBarColor(value) {
+    if (value >= 80) {
+        return '#90EE90'; // Verde claro (light green)
+    } else if (value >= 50) {
+        return 'yellow'; // Probabilidade mediana
+    } else {
+        return 'red'; // Baixa probabilidade
+    }
+}
+
+    
         // Função para atualizar as probabilidades e exibir nos cartões
         function updateProbabilities() {
             const cards = document.querySelectorAll('.game-card');
             const totalGames = cards.length;
     
-            // Gera probabilidades diversificadas
-            const probabilities = generateDiversifiedProbabilities(totalGames);
+            // Gera probabilidades ajustadas
+            const probabilities = generateProbabilities(totalGames);
     
             cards.forEach((card, index) => {
                 const { maxima, padrao, minima } = probabilities[index];
     
+                // Atualiza as barras de progresso
                 const maximaBar = card.querySelector('.progress-bar.maxima span');
                 const padraoBar = card.querySelector('.progress-bar.padrao span');
                 const minimaBar = card.querySelector('.progress-bar.minima span');
     
-                if (maximaBar) maximaBar.style.width = `${maxima}%`;
-                if (padraoBar) padraoBar.style.width = `${padrao}%`;
-                if (minimaBar) minimaBar.style.width = `${minima}%`;
-
-                 // Calcular a distribuição como a média das três probabilidades
-                 const distribution = Math.round((maxima + padrao + minima) / 3);
+                if (maximaBar) {
+                    maximaBar.style.width = `${maxima}%`;
+                    maximaBar.style.backgroundColor = getBarColor(maxima); // Aplica cor dinâmica
+                }
+                if (padraoBar) {
+                    padraoBar.style.width = `${padrao}%`;
+                    padraoBar.style.backgroundColor = getBarColor(padrao); // Aplica cor dinâmica
+                }
+                if (minimaBar) {
+                    minimaBar.style.width = `${minima}%`;
+                    minimaBar.style.backgroundColor = getBarColor(minima); // Aplica cor dinâmica
+                }
     
+                // Atualiza os textos de probabilidade
                 const stats = card.querySelector('.stats');
                 stats.innerHTML = `
-                    <p>Distribuição: ${Math.max(maxima, padrao, minima)}%</p>
+                    <p>Distribuição: ${Math.round((maxima + padrao + minima) / 3)}%</p>
                     <div class="progress-bar maxima">
-                        <span style="width: ${maxima}%;"></span>
+                        <span style="width: ${maxima}%; background-color: ${getBarColor(maxima)};"></span>
                     </div>
                     <p>Máxima: ${maxima}%</p>
                     <div class="progress-bar padrao">
-                        <span style="width: ${padrao}%;"></span>
+                        <span style="width: ${padrao}%; background-color: ${getBarColor(padrao)};"></span>
                     </div>
                     <p>Padrão: ${padrao}%</p>
                     <div class="progress-bar minima">
-                        <span style="width: ${minima}%;"></span>
+                        <span style="width: ${minima}%; background-color: ${getBarColor(minima)};"></span>
                     </div>
                     <p>Mínima: ${minima}%</p>
                 `;
@@ -967,6 +963,10 @@
         assignRandomLinks();
         updateProbabilities();
     </script>
+    
+    
+    
+    
     
     
     
