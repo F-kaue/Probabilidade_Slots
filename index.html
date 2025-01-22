@@ -14,27 +14,27 @@
         }
     }
 
-    /* Estilo geral - permanece igual */
+    /* Estilo geral */
     body {
         font-family: 'Poppins', Arial, sans-serif;
-        background: linear-gradient(135deg, #1e1e2f, #312450);
-        color: #fff;
+        background: linear-gradient(135deg, #0b0c1b, #1a1d30); /* Fundo escuro */
+        color: #ffffff;
         margin: 0;
         padding: 0;
     }
 
     header {
         padding: 20px;
-        background: linear-gradient(135deg, #27293d, #3a416f);
+        background: linear-gradient(135deg, #141629, #22263f); /* Fundo escuro do cabeçalho */
         text-align: center;
         position: relative;
-        border-bottom: 3px solid #28a745;
+        border-bottom: 3px solid #00502D; /* Verde escuro */
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
     }
 
     header h1 {
         margin: 0;
-        font-size: 3em; /* Tamanho padrão para desktop */
+        font-size: 3em;
         text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
     }
 
@@ -47,7 +47,7 @@
     }
 
     .game-card {
-        background: linear-gradient(135deg, #2c2f48, #3a416f);
+        background: linear-gradient(135deg, #1c1e2b, #2a2e42); /* Cartão com tons escuros */
         border-radius: 15px;
         width: 230px;
         padding: 15px;
@@ -73,7 +73,7 @@
     .game-card h3 {
         font-size: 20px;
         margin: 10px 0;
-        color: #ffdb4d;
+        color: #F6921D; /* Laranja */
         text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
     }
 
@@ -87,7 +87,7 @@
         height: 10px;
         border-radius: 5px;
         margin-bottom: 8px;
-        background-color: #444;
+        background-color: #6D6E71; /* Cinza médio */
         position: relative;
     }
 
@@ -99,20 +99,20 @@
     }
 
     .progress-bar.minima span {
-        background-color: #ff4d4d;
+        background-color: #F6921D; /* Laranja */
     }
 
     .progress-bar.padrao span {
-        background-color: #ffd633;
+        background-color: #B5A27B; /* Bege claro */
     }
 
     .progress-bar.maxima span {
-        background-color: #4dff88;
+        background-color: #00502D; /* Verde escuro */
     }
 
     .game-card button {
-        background: linear-gradient(135deg, #28a745, #43d050);
-        color: #fff;
+        background: linear-gradient(135deg, #00502D, #087A3E); /* Botão verde escuro */
+        color: #ffffff;
         border: none;
         padding: 10px;
         width: 100%;
@@ -124,14 +124,14 @@
     }
 
     .game-card button:hover {
-        background: linear-gradient(135deg, #218838, #37c344);
+        background: linear-gradient(135deg, #004525, #066E35); /* Hover do botão */
         transform: scale(1.05);
     }
 
     footer {
         text-align: center;
         padding: 20px;
-        background: linear-gradient(135deg, #27293d, #3a416f);
+        background: linear-gradient(135deg, #141629, #22263f); /* Fundo escuro do rodapé */
         margin-top: 20px;
         box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.3);
     }
@@ -139,9 +139,61 @@
     footer p {
         margin: 0;
         font-size: 14px;
-        color: #bbb;
+        color: #6D6E71; /* Cinza médio */
     }
+
+    /* Estilo da área de provas sociais */
+    .social-proof-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+  }
+
+  .social-proof {
+    display: flex;
+    align-items: center;
+    background: #2c3e50;
+    color: white;
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    animation: fade-in-out 6s ease-in-out;
+  }
+
+  .social-proof img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+
+  @keyframes fade-in-out {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    10%, 90% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+  }
+
+
+
 </style>
+
+
+<div id="social-proof-container" class="social-proof-container"></div>
+
+
+  
+  
 
 <body>
     <header>
@@ -958,9 +1010,7 @@
 
     <script>
         const links = [
-            
             'https://www.gata777.net/?id=585717420&currency=BRL&type=2'
-
         ];
     
         // Função para atribuir links aleatórios aos botões
@@ -975,23 +1025,30 @@
             });
         }
     
-        // Função para gerar probabilidades com maior peso para "mínima"
-        function generateProbabilities(totalGames) {
+        // Função para gerar probabilidades balanceadas
+        function generateBalancedProbabilities(totalGames) {
             const probabilities = [];
+            const groupSize = Math.floor(totalGames / 3); // Divide em 3 grupos iguais
     
             for (let i = 0; i < totalGames; i++) {
                 let minima, padrao, maxima;
     
-                // Define a probabilidade "mínima" com maior chance de ser alta
-                minima = Math.random() < 0.5 
-                    ? Math.floor(Math.random() * (99 - 80) + 80) // Alta probabilidade: 80% - 99%
-                    : Math.floor(Math.random() * (50 - 10) + 10); // Baixa probabilidade: 10% - 50%
-    
-                // Define a probabilidade "padrão" proporcional à "mínima"
-                padrao = Math.floor(Math.random() * (minima - 5) + 5); // 5% a um pouco abaixo da mínima
-    
-                // Define a probabilidade "máxima" maior que "padrão"
-                maxima = Math.floor(Math.random() * (100 - padrao) + padrao); // Entre "padrão" e 100%
+                if (i < groupSize) {
+                    // Grupo com mínimas baixas (10% a 30%)
+                    minima = Math.floor(Math.random() * 20) + 10; // 10% a 30%
+                    padrao = Math.floor(Math.random() * (70 - minima)) + minima; // mínima a 70%
+                    maxima = Math.floor(Math.random() * (100 - padrao)) + padrao; // padrão a 100%
+                } else if (i < groupSize * 2) {
+                    // Grupo com mínimas médias (30% a 70%)
+                    minima = Math.floor(Math.random() * 40) + 30; // 30% a 70%
+                    padrao = Math.floor(Math.random() * (90 - minima)) + minima; // mínima a 90%
+                    maxima = Math.floor(Math.random() * (100 - padrao)) + padrao; // padrão a 100%
+                } else {
+                    // Grupo com mínimas altas (70% a 100%)
+                    minima = Math.floor(Math.random() * 30) + 70; // 70% a 100%
+                    padrao = Math.floor(Math.random() * (100 - minima)) + minima; // mínima a 100%
+                    maxima = 100; // Máxima sempre 100%
+                }
     
                 probabilities.push({ maxima, padrao, minima });
             }
@@ -1000,25 +1057,36 @@
         }
     
         // Função para determinar a cor da barra com base no valor da probabilidade
-        // Função para determinar a cor da barra com base no valor da probabilidade
-function getBarColor(value) {
-    if (value >= 80) {
-        return '#90EE90'; // Verde claro (light green)
-    } else if (value >= 50) {
-        return 'yellow'; // Probabilidade mediana
-    } else {
-        return 'red'; // Baixa probabilidade
-    }
-}
-
+        function getBarColor(value) {
+            if (value >= 80) {
+                return '#90EE90'; // Verde claro (alta)
+            } else if (value >= 50) {
+                return 'yellow'; // Média
+            } else {
+                return 'red'; // Baixa
+            }
+        }
+    
+        // Função para carregar ou gerar probabilidades
+        function loadProbabilities(totalGames) {
+            const savedProbabilities = localStorage.getItem('balancedProbabilities');
+    
+            if (savedProbabilities) {
+                return JSON.parse(savedProbabilities);
+            } else {
+                const probabilities = generateBalancedProbabilities(totalGames);
+                localStorage.setItem('balancedProbabilities', JSON.stringify(probabilities));
+                return probabilities;
+            }
+        }
     
         // Função para atualizar as probabilidades e exibir nos cartões
         function updateProbabilities() {
             const cards = document.querySelectorAll('.game-card');
             const totalGames = cards.length;
     
-            // Gera probabilidades ajustadas
-            const probabilities = generateProbabilities(totalGames);
+            // Carrega probabilidades salvas ou gera novas
+            const probabilities = loadProbabilities(totalGames);
     
             cards.forEach((card, index) => {
                 const { maxima, padrao, minima } = probabilities[index];
@@ -1030,15 +1098,15 @@ function getBarColor(value) {
     
                 if (maximaBar) {
                     maximaBar.style.width = `${maxima}%`;
-                    maximaBar.style.backgroundColor = getBarColor(maxima); // Aplica cor dinâmica
+                    maximaBar.style.backgroundColor = getBarColor(maxima);
                 }
                 if (padraoBar) {
                     padraoBar.style.width = `${padrao}%`;
-                    padraoBar.style.backgroundColor = getBarColor(padrao); // Aplica cor dinâmica
+                    padraoBar.style.backgroundColor = getBarColor(padrao);
                 }
                 if (minimaBar) {
                     minimaBar.style.width = `${minima}%`;
-                    minimaBar.style.backgroundColor = getBarColor(minima); // Aplica cor dinâmica
+                    minimaBar.style.backgroundColor = getBarColor(minima);
                 }
     
                 // Atualiza os textos de probabilidade
@@ -1063,13 +1131,76 @@ function getBarColor(value) {
             assignRandomLinks();
         }
     
-        // Define o intervalo de atualização para 5 minutos
-        setInterval(updateProbabilities, 300000);
+        // Limpa as probabilidades salvas no intervalo de 5 minutos
+        setInterval(() => {
+            localStorage.removeItem('balancedProbabilities');
+            updateProbabilities();
+        }, 300000);
     
         // Inicializa o script
         assignRandomLinks();
         updateProbabilities();
+
+
+        // Selecionar todos os jogos disponíveis no contêiner
+    const gameCards = document.querySelectorAll(".game-card");
+  
+  // Lista de nomes de usuários fictícios
+  const users = ["kaka1k", "joana99","kahalvess","kakawewe", "gamer123", "luana_bets", "marco_win","Mariasilva", "JoaoOliveira", "AnaCosta", "PedroSouza", "CarlaFernandes", "LucasPereira", "JulianaSantos", "CarlosLima", "BeatrizAlves", "FernandoGomes", "PatriciaRodrigues", "RafaelMartins", "CamilaAraujo", "GabrielMelo", "MarianaCarvalho", "RodrigoNascimento", "LarissaBarbosa", "FelipeSouza", "VanessaAlmeida", "BrunoCardoso", "IsabelaFreitas", "DanielaRibeiro", "RicardoCastro", "RenataDias", "EduardoMoreira", "ClaudiaMendes", "ThiagoRocha", "GabrielaLima", "AndreMonteiro", "SabrinaTorres", "GustavoFarias", "NataliaSilva", "RogerioSantos", "BiancaOliveira", "SamuelCosta", "TainaOliveira", "MarcosFerreira", "ElisaNunes", "DiegoAlbuquerque", "SimoneFernandes", "PauloMendes", "TalitaSouza", "CesarCarvalho", "AlineRibeiro", "JorgeAlmeida", "CarolineLima", "FabioRodrigues", "LuanaCosta", "CeciliaMartins", "EnzoBarbosa", "HelenaOliveira", "JulioMonteiro", "MartaNascimento", "RafaelSantos", "LiviaPereira", "BrunaSouza", "AntonioCosta", "MirellaOliveira", "RobertoSantos", "BarbaraNogueira", "LeonardoGomes", "MilenaRodrigues", "MiguelAlves", "LucianaFreitas", "MuriloAlmeida", "CarolinaDias", "HugoCarvalho", "VitoriaPereira", "LeandroMartins", "StellaSouza", "HenriqueAlves", "RaquelCosta", "VitorNogueira", "AdrianaLima", "LuanSantos", "MicheleFreitas", "MauricioAlmeida", "SandraMendes", "JoseCarvalho", "ThaisOliveira", "BrendaNascimento", "ValentinaSilva", "ArturLima", "SimoneDias", "RodrigoFreitas", "NinaCosta", "MarceloSantos", "IrisOliveira", "DiogoMelo", "KarinaAraujo", "PedroBorges", "LarissaNogueira", "AntonioRocha", "JulianaCastro", "CaioMendes", "EvelynCarvalho", "JoanaMartins", "BrunoFreitas", "LeticiaNunes", "IgorSantos","FelipeCosta", "TatianaSilva", "LuisPereira", "DanieleFerreira", "OtavioGomes", "AlineDias", "AndersonMendes", "LaraSouza", "RobsonRocha", "LeticiaCarvalho", "MarcioAlmeida", "NathaliaTorres", "RicardoLima", "JanainaNunes", "BernardoMonteiro", "AlessandraSantos", "FlavioSilva", "SuelenCosta", "RenatoOliveira", "PriscilaBarbosa", "ClaudioFernandes", "VivianMartins", "ThiagoDias", "SimoneSantos", "JefersonSilva", "DeboraGomes", "HenriquePereira", "TainaRocha", "BrunaFernandes", "GilbertoAlmeida", "KatiaSouza", "FernandoCarvalho", "MarceloGomes", "ElianeLima", "AdrianoBarbosa", "DaviRocha", "JanainaAlmeida", "HelenaCosta", "LeandroOliveira", "LucianaDias", "FilipeFerreira", "AndreaSantos", "LuizPereira", "PaulaSilva", "MatheusGomes", "TatianeSouza", "JoaoRocha", "JulianaBarbosa", "VitorLima", "RenataCarvalho", "LeonardoSilva", "BiaAlmeida", "RicardoGomes", "CamilaSouza", "VictorLima", "LarissaCarvalho", "RenatoSantos", "BiancaGomes", "AndrePereira", "CamilaSilva", "VitorSouza", "GabrielaRocha", "RodrigoBarbosa", "MarcioCosta", "VaniaDias", "AdrianaLima", "ClaudioCarvalho", "ElisaSilva", "FlavioSouza", "RenanLima", "FernandaRocha", "GustavoFerreira", "PaulaSantos", "CarlosGomes", "KatiaBarbosa", "MarceloLima", "JefersonCosta", "BiancaAlmeida", "MarianaGomes", "GabrielSilva", "PriscilaDias", "FernandoSantos", "JuliaRocha", "BrenoPereira", "CamilaFerreira", "LarissaLima", "LucasBarbosa", "MirellaAlmeida", "RicardoSouza", "RenataRocha", "JulianaFerreira", "BrunaGomes", "MarcioSilva", "LucasDias", "AndersonCosta", "FilipeOliveira", "LeticiaCarvalho", "HenriqueSantos", "TatianaLima"];
+
+  // Função para gerar valores de vitória (valores inteiros)
+  function getRandomWin() {
+    return Math.floor(Math.random() * (500 - 5) + 10); // Valores entre 10 e 100
+  }
+
+  // Função para gerar um intervalo aleatório entre 5 a 10 segundos
+  function getRandomInterval() {
+    return Math.floor(Math.random() * (20000 - 15000) + 5000); // Entre 5000ms (5s) e 10000ms (10s)
+  }
+
+  // Função para criar notificações
+  function showSocialProof() {
+    const container = document.getElementById("social-proof-container");
+
+    // Selecionar um jogo aleatório do contêiner
+    const randomGame = gameCards[Math.floor(Math.random() * gameCards.length)];
+    const gameName = randomGame.querySelector("h3").textContent; // Nome do jogo
+    const gameImg = randomGame.querySelector("img").src; // Caminho da imagem
+
+    // Selecionar um usuário aleatório
+    const user = users[Math.floor(Math.random() * users.length)];
+
+    // Gerar o valor da vitória
+    const winAmount = getRandomWin();
+
+    // Criar o elemento da notificação
+    const notification = document.createElement("div");
+    notification.className = "social-proof";
+    notification.innerHTML = `
+      <img src="${gameImg}" alt="${gameName}" />
+      <div>
+        <strong>${user}</strong> ganhou <span style="color: #ffd700;">R$${winAmount},00</span> no <em>${gameName}</em>!
+      </div>
+    `;
+
+    // Adicionar a notificação ao contêiner
+    container.appendChild(notification);
+
+    // Remover a notificação após 6 segundos
+    setTimeout(() => {
+      if (container.contains(notification)) {
+        container.removeChild(notification);
+      }
+    }, 6000); // 6 segundos (duração da exibição)
+
+    // Agendar a próxima notificação
+    setTimeout(showSocialProof, getRandomInterval());
+  }
+
+  // Inicializar a primeira notificação
+  setTimeout(showSocialProof, getRandomInterval());
     </script>
+    
     
     
     
